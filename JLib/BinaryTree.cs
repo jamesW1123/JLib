@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JLib
 {
-    public class Class1
+    public class BinaryTree
     {
     }
 }
