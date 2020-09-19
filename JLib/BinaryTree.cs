@@ -194,6 +194,66 @@ namespace JLib
             result.Add(root.element);
             inorder(root.right, ref result);
         }
+        
+        /** Postorder traversal from the root */
+        public List<E> postorder()
+        {
+            List<E> result = new List<E>();
+            postorder(root, ref result);
+            return result;
+        }
+
+        /** Postorder traversal from a subtree */
+        protected void postorder(TreeNode<E> root, ref List<E> result)
+        {
+            if (root == null) return;
+            postorder(root.left, ref result);
+            postorder(root.right, ref result);
+            result.Add(root.element);
+        }
+
+        /** Preorder traversal from the root */
+        public List<E> preorder()
+        {
+            List<E> result = new List<E>();
+            preorder(root, ref result);
+            return result;
+        }
+
+        /** Preorder traversal from a subtree */
+        protected void preorder(TreeNode<E> root, ref List<E> result)
+        {
+            if (root == null) return;
+            result.Add(root.element);
+            preorder(root.left, ref result);
+            preorder(root.right, ref result);
+        }
+
+        /** Breadth-first traversal from the root */
+        public List<E> breadthFirst()
+        {
+            List<E> result = new List<E>();
+            breadthFirst(root, ref result);
+            return result;
+        }
+
+        /** Breadth-first traversal from the root */
+        protected void breadthFirst(TreeNode<E> root, ref List<E> result)
+        {
+
+            Queue<TreeNode<E>> q = new Queue<TreeNode<E>>();
+            if (root == null) return;
+            q.Enqueue(root);
+            while (q.Count > 0)
+            {
+                TreeNode<E> n = (TreeNode<E>)q.Dequeue();
+                result.Add(root.element);
+                if (n.left != null)
+                    q.Enqueue(n.left);
+                if (n.right != null)
+                    q.Enqueue(n.right);
+            }
+        }
 
         /** This inner class is static, because it does not access 
           any instance members defined in its outer class */
@@ -208,63 +268,7 @@ namespace JLib
             {
                 element = e;
             }
-        }        
-
-        /** Postorder traversal from the root */
-        //public void postorder()
-        //{
-        //    postorder(root);
-        //}
-
-        ///** Postorder traversal from a subtree */
-        //protected void postorder(TreeNode<E> root)
-        //{
-        //    if (root == null) return;
-        //    postorder(root.left);
-        //    postorder(root.right);
-        //    Console.Out.Write(root.element + " ");
-        //}
-
-        /** Preorder traversal from the root */
-        //public void preorder()
-        //{
-        //    preorder(root);
-        //}
-
-        ///** Preorder traversal from a subtree */
-        //protected void preorder(TreeNode<E> root)
-        //{
-        //    if (root == null) return;
-        //    Console.Out.Write(root.element + " ");
-        //    preorder(root.left);
-        //    preorder(root.right);
-        //}
-
-        /** Breadth-first traversal from the root */
-        //public void breadthFirst()
-        //{
-        //    breadthFirst(root);
-        //}
-
-        ///** Breadth-first traversal from the root */
-        //protected void breadthFirst(TreeNode<E> root)
-        //{
-
-        //    Queue<TreeNode<E>> q = new Queue<TreeNode<E>>();
-        //    if (root == null) return;
-        //    q.(root);
-        //    while (!q.isEmpty())
-        //    {
-        //        TreeNode<E> n = (TreeNode<E>)q.remove();
-        //        Console.Out.Write(" " + n.element);
-        //        if (n.left != null)
-        //            q.add(n.left);
-        //        if (n.right != null)
-        //            q.add(n.right);
-        //    }
-        //}
-
-
+        }
 
         /** Returns a path from the root leading to the specified element */
         //public ArrayList<TreeNode<E>> path(E e)
