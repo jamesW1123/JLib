@@ -254,17 +254,15 @@ namespace JLib
                     q.Enqueue(n.right);
             }
         }
-
-        /** This inner class is static, because it does not access 
-          any instance members defined in its outer class */
-        public class TreeNode<E>
+               
+        public class TreeNode<T>
         {
 
-            public E element { get; set; }
-            public TreeNode<E> left { get; set; }
-            public TreeNode<E> right { get; set; }
+            public T element { get; set; }
+            public TreeNode<T> left { get; set; }
+            public TreeNode<T> right { get; set; }
 
-            public TreeNode(E e)
+            public TreeNode(T e)
             {
                 element = e;
             }
